@@ -1,0 +1,20 @@
+
+Rquires oauth2 libraries.  Install with
+
+sudo easy_install oauth2
+
+
+The code requires a CONSUMER_KEY and CONSUMER_SECRET from yammer to authorise your application to access their network. The first time it runs after that you'll have to go through a verification/ PIN entry process.
+
+The script does a query first, then tries to send a message.  You'll need to fill out either GROUP_ID (the group you want to send a message to) or ME_ID (the ID of a user you'd like to send a message to) to send a message.  You then need to edit the params block, either to include group_id if you want to send to a group, or comment that line out and add in 'direct_to_id' to send a private message.
+
+
+You can modify the initial query to query group and user IDs, by setting the query url to
+
+https://www.yammer.com/api/v1/users.xml
+or
+https://www.yammer.com/api/v1/groups.xml
+
+Those xml urls can also be json urls, depending on what sort of results format you'd prefer to consume.
+
+
