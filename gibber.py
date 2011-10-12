@@ -5,6 +5,8 @@ import time
 import urllib
 
 import urlparse
+import json
+from pprint import pprint
 
 TOKEN_STORE = "/tmp/yammer.token"
 
@@ -83,9 +85,9 @@ if (authKey == ''):
     file_object.close( )
 
 # this can be either xml or json
-url = 'https://www.yammer.com/api/v1/messages.xml'
-#url = 'https://www.yammer.com/api/v1/users.xml'
-#url = 'https://www.yammer.com/api/v1/groups.xml'
+url = 'https://www.yammer.com/api/v1/messages.json'
+#url = 'https://www.yammer.com/api/v1/users.json'
+#url = 'https://www.yammer.com/api/v1/groups.json'
 
 
 GROUP_ID = None
@@ -101,6 +103,10 @@ print resp
 print content
 
 # do something with the json...?
+data = json.loads(content)
+
+pprint(data['messages'])
+
 
 # sending messages to a group
 url = 'https://www.yammer.com/api/v1/messages/'
