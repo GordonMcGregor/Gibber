@@ -84,9 +84,12 @@ if (authKey == ''):
 
 # this can be either xml or json
 url = 'https://www.yammer.com/api/v1/messages.xml'
+#url = 'https://www.yammer.com/api/v1/users.xml'
+#url = 'https://www.yammer.com/api/v1/groups.xml'
 
-GROUP_ID = 
-ME_ID = 
+
+GROUP_ID = None
+ME_ID = None
 
 token = oauth.Token(key=authKey, secret=authSecret)
 consumer = oauth.Consumer(key=CONSUMER_KEY, secret=CONSUMER_SECRET)
@@ -110,7 +113,8 @@ params = {
 }
 
 encodedParams = urllib.urlencode (params)
-resp, content = client.request(url, 'POST', encodedParams)
-print resp['status']
+if GROUP_ID or ME_ID:
+    resp, content = client.request(url, 'POST', encodedParams)
+    print resp['status']
 
 
